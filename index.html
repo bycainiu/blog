@@ -16,7 +16,7 @@ description: "It's great to be great,but it's greater to be human.--W.Rogers"
 </style>
 
 <div id="background">
-    <canvas id="canvas">
+    
 
 
 
@@ -57,105 +57,88 @@ description: "It's great to be great,but it's greater to be human.--W.Rogers"
     {% endif %}
 </ul>
 {% endif %}
-</canvas></div><script>
-    // 设置div背景的宽高
-    background = document.getElementById("background")
-    background.style.width = innerWidth + 'px'
-    background.style.height = innerHeight + 'px'
-
-    // 获取canvas对象
-    var canvas = document.getElementById("canvas")
-    // 获取画笔
-    var ctx = canvas.getContext("2d")
-
-    // 设置canvas宽高
-    canvas.height = innerHeight
-    canvas.width = innerWidth
-
-    // 定义一个粒子数组
-    var particlesArray = []
-    // 定义页面内粒子的数量
-    var count = parseInt(canvas.width / 80 * canvas.height / 80)
-
-
-    // 定义粒子类
-    class Particle {
-        constructor(x, y) {
-            this.x = x
-            this.y = y
-            // x，y轴的移动速度  -0.5 -- 0.5
-            this.directionX = Math.random() - 0.5
-            this.directionY = Math.random() - 0.5
-        }
-
-        // 更新点的坐标
-        update() {
-            this.x += this.directionX
-            this.y += this.directionY
-        }
-
-        // 绘制粒子
-        draw() {
-            ctx.beginPath()
-            ctx.arc(this.x, this.y, 2, 0, Math.PI * 2)
-            ctx.closePath()
-            ctx.fillStyle = "white"
-            ctx.fill()
+<script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>　
+<script>
+!
+function() {
+    function n(n, e, t) {
+        return n.getAttribute(e) || t
+    }
+    function e(n) {
+        return document.getElementsByTagName(n)
+    }
+    function t() {
+        var t = e("script"),
+        o = t.length,
+        i = t[o - 1];
+        return {
+            l: o,
+            z: n(i, "zIndex", -1),
+            o: n(i, "opacity", .5),
+            c: n(i, "color", "0,0,0"),
+            n: n(i, "count", 99)
         }
     }
-
-    // 创建粒子
-    function createParticle() {
-        // 生成一个点的随机坐标
-        var x = Math.random() * innerWidth
-        var y = Math.random() * innerHeight
-
-        particlesArray.push(new Particle(x, y))
+    function o() {
+        a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
     }
-
-    // 处理粒子
-    // 先更新坐标，再绘制出来
-    function handleParticle() {
-        for(var i = 0; i < particlesArray.length; i++) {
-            var particle = particlesArray[i]
-            particle.update()
-            particle.draw()
-            // 超出范围就将这个粒子删除
-            if(particle.x < 0 || particle.x > canvas.width || particle.y < 0 || particle.y > canvas.height) {
-                particlesArray.splice(i, 1)
-            }
-
-            // 绘制两个点之间的连线
-            for(var j = i + 1; j < particlesArray.length; j++) {
-                dx = particlesArray[j].x - particlesArray[i].x
-                dy = particlesArray[j].y - particlesArray[i].y
-                dist = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2))
-                if(dist < 100) {
-                    ctx.beginPath()
-                    ctx.strokeStyle = "rgba(255, 255, 255, " + (1 - dist / 100)
-                    ctx.moveTo(particlesArray[i].x, particlesArray[i].y)
-                    ctx.lineTo(particlesArray[j].x, particlesArray[j].y)
-                    ctx.closePath()
-                    ctx.lineWidth = 1
-                    ctx.stroke()
-                }
-            }
-        }
+    function i() {
+        r.clearRect(0, 0, a, c);
+        var n, e, t, o, m, l;
+        s.forEach(function(i, x) {
+            for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e],
+            null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+        }),
+        x(i)
     }
-
-    function draw() {
-        // 首先清空画布
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        // 如果粒子数量小于规定数量，就生成新的粒子
-        if(particlesArray.length < count) {
-            createParticle()
-        }
-
-        // 处理粒子
-        handleParticle()
+    var a, c, u, m = document.createElement("canvas"),
+    d = t(),
+    l = "c_n" + d.l,
+    r = m.getContext("2d"),
+    x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(n) {
+        window.setTimeout(n, 1e3 / 45)
+    },
+    w = Math.random,
+    y = {
+        x: null,
+        y: null,
+        max: 2e4
+    };
+    m.id = l,
+    m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o,
+    e("body")[0].appendChild(m),
+    o(),
+    window.onresize = o,
+    window.onmousemove = function(n) {
+        n = n || window.event,
+        y.x = n.clientX,
+        y.y = n.clientY
+    },
+    window.onmouseout = function() {
+        y.x = null,
+        y.y = null
+    };
+    for (var s = [], f = 0; d.n > f; f++) {
+        var h = w() * a,
+        g = w() * c,
+        v = 2 * w() - 1,
+        p = 2 * w() - 1;
+        s.push({
+            x: h,
+            y: g,
+            xa: v,
+            ya: p,
+            max: 6e3
+        })
     }
-
-    // 设置定时器
-    setInterval(draw, 10)
-
+    u = s.concat([y]),
+    setTimeout(function() {
+        i()
+    },
+    100)
+} ();
 </script>
+
+</div>
