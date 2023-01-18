@@ -10,19 +10,26 @@ header-img: "img/post-bg-rwd.jpg"
     <option value="0" selected> 中文 Chinese </option>
     <option value="1"> 英文 English </option>
 </select> -->
+<style>
+    .pp1{
+        font-size: medium;
+        color: #46b8da;
+    }
 
+
+</style>
 <!-- Chinese Version -->
 <div class="zh post-container">
 
     <!--copied from markdown -->
-    <blockquote><p>冰冻三尺 非一日之寒<br>
+    <blockquote><p class="pp1">冰冻三尺 非一日之寒<br>
     积土成山 非斯须之作</p></blockquote>
 
-    <p>Hey，我是<strong>柏荧(BY)</strong>，一只iOS程序猿，现在厦门工作。</p>
+    <p>Hey，我是<strong>白菜牛（土！！！）</strong>，一只程序猿，目前兼信息与通信工程本科生（逻辑？），就读于北京某赛博理塘。</p>
 
-    <p>工作、学习之余，我还是一个健身爱好者，同时也非常喜欢拳击。</p>
+    <p>显而易见地，中肯地，我是一名技术小白，希望能够记录下自己的成长过程，当然，如果能给大家带来一些帮助我将十分荣幸。</p>
 
-    <p>这是我的利用 <a href="https://pages.github.com/">GitHub Pages</a> 与 <a href="http://jekyll.com.cn/">Jekyll</a> 搭建的 个人博客。我在GitHub主页<a href="https://github.com/qiubaiying">👉GitHub·BY</a> 与 简书主页<a href="https://http://www.jianshu.com/u/e71990ada2fd">👉BY</a>。如果有什么问题，欢迎提出探讨~</p>
+    <p>这是我的利用 <a href="https://pages.github.com/">GitHub Pages</a> 与 <a href="http://jekyll.com.cn/">Jekyll</a> 搭建的 个人博客。我在GitHub主页<a href="https://github.com/bycainiu">👉GitHub·bycainiu</a> 。如果有什么问题，欢迎提出探讨~</p>
 
     <p></p>
     
@@ -112,7 +119,7 @@ header-img: "img/post-bg-rwd.jpg"
     repo: '{{site.gitalk.repo}}',
     owner: '{{site.gitalk.owner}}',
     admin: ['{{site.gitalk.admin}}'],
-    distractionFreeMode: {{site.gitalk.distractionFreeMode}},
+    distractionFreeMode: '{{site.gitalk.distractionFreeMode}}',
     id: 'about',
     });
     gitalk.render('gitalk-container');
