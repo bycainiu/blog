@@ -99,8 +99,8 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "WY",
-        href: "http://zhengwuyang.com"
+        title: "CSDN",
+        href: "https://www.csdn.net/"
     },{
         title: "简书·BY",
         href: "http://www.jianshu.com/u/e71990ada2fd"
@@ -110,5 +110,8 @@ friends: [
     },{
         title: "Apple Developer",
         href: "https://developer.apple.com/"
+    },{
+        title:"火花空间",
+        href:"https://www.oursparkspace.cn/"
     }
 ]
